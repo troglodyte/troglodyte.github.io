@@ -2,89 +2,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Michael Harris — retro·modern</title>
-    <meta name="description" content="Retro-modern hacker aesthetic personal site with a clean terminal and cards." />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Michael Harris — troglodyte.github.io</title>
+    <meta name="description" content="Michael Harris - principal software engineer"/>
     <style>
-        :root{
-            --bg:#0b0f14;          /* deep slate */
-            --bg-elev:#0f141b;     /* card background */
-            --fg:#cfe6d9;          /* primary text */
-            --muted:#8aa29e;       /* secondary */
-            --acc:#5cf2c7;         /* mint accent */
-            --acc-2:#7aa2ff;       /* blue accent */
-            --shadow: 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.03);
-            --radius:16px;
-            --grid: radial-gradient(1000px 600px at 10% 0%, rgba(92,242,199,.07), transparent 60%),
-            radial-gradient(800px 800px at 90% 10%, rgba(122,162,255,.05), transparent 60%);
+        :root {
+            --bg: #0b0f14;
+            --bg-elev: #0f141b;
+            --fg: #cfe6d9;
+            --muted: #8aa29e;
+            --acc: #5cf2c7;
+            --acc-2: #7aa2ff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .03);
+            --radius: 16px;
+            --grid: radial-gradient(1000px 600px at 10% 0%, rgba(92, 242, 199, .07), transparent 60%),
+            radial-gradient(800px 800px at 90% 10%, rgba(122, 162, 255, .05), transparent 60%);
         }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0; background:var(--bg); color:var(--fg);
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
             font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-            line-height:1.6; letter-spacing:.2px;
+            line-height: 1.6;
+            letter-spacing: .2px;
             background-image: var(--grid);
             background-attachment: fixed;
         }
 
-        a{color:var(--acc)} a:hover{color:var(--acc-2)}
-
-        .wrap{max-width:1100px; margin:0 auto; padding:28px; display:grid; gap:22px}
-
-        header{
-            display:flex; align-items:center; justify-content:space-between; gap:16px;
+        a {
+            color: var(--acc)
         }
-        .brand{display:flex; align-items:center; gap:12px}
-        .logo{
-            width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--acc), var(--acc-2));
-            box-shadow: 0 8px 30px rgba(124, 200, 255, .25); flex:0 0 auto; position:relative;
+
+        a:hover {
+            color: var(--acc-2)
         }
-        .logo:after{content:"$"; position:absolute; inset:0; display:grid; place-items:center; color:#00120d; font-weight:800}
-        .title{font-weight:800; letter-spacing:.3px}
-        nav{display:flex; gap:14px; flex-wrap:wrap}
-        .pill{
-            padding:8px 12px; background:color-mix(in srgb, var(--bg-elev) 92%, white 8%);
-            border:1px solid rgba(255,255,255,.06); border-radius:999px; color:var(--fg); text-decoration:none;
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px;
+            display: grid;
+            gap: 22px
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--acc), var(--acc-2));
+            box-shadow: 0 8px 30px rgba(124, 200, 255, .25);
+            flex: 0 0 auto;
+            position: relative;
+        }
+
+        .logo:after {
+            content: "$";
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: #00120d;
+            font-weight: 800
+        }
+
+        .title {
+            font-weight: 800;
+            letter-spacing: .3px
+        }
+
+        nav {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .pill {
+            padding: 8px 12px;
+            background: color-mix(in srgb, var(--bg-elev) 92%, white 8%);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 999px;
+            color: var(--fg);
+            text-decoration: none;
             box-shadow: var(--shadow);
         }
 
-        .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:22px}
-        @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
-
-        .card{
-            background:linear-gradient(180deg, color-mix(in srgb, var(--bg-elev) 94%, white 6%), color-mix(in srgb, var(--bg-elev) 98%, black 2%));
-            border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow);
-            overflow:hidden; position:relative;
+        .grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 22px
         }
-        .card h2{margin:0; padding:18px 20px; font-size:18px; color:var(--muted); border-bottom:1px solid rgba(255,255,255,.06)}
-        .card .body{padding:18px 20px}
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns:1fr
+            }
+        }
+
+        .card {
+            background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elev) 94%, white 6%), color-mix(in srgb, var(--bg-elev) 98%, black 2%));
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 18px 20px;
+            font-size: 18px;
+            color: var(--muted);
+            border-bottom: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .card .body {
+            padding: 18px 20px
+        }
 
         /* Retro-modern terminal */
-        .term{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:14px}
-        .term .screen{height:360px; overflow:auto; background:linear-gradient(180deg, rgba(8,12,17,.9), rgba(8,12,17,.96));
-            border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:16px; position:relative}
-        .term .prompt{color:var(--acc)}
-
-        .input{
-            display:flex; gap:10px; align-items:center; margin-top:10px; background:rgba(255,255,255,.02);
-            border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:10px 12px;
+        .term {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 14px
         }
-        .input input{flex:1; border:none; outline: none; background:transparent; color:var(--fg); font:inherit}
-        .input .btn{padding:8px 12px; border-radius:10px; background:linear-gradient(135deg, var(--acc), var(--acc-2)); color:#021b13; font-weight:700; border:none; cursor:pointer}
+
+        .term .screen {
+            height: 360px;
+            overflow: auto;
+            background: linear-gradient(180deg, rgba(8, 12, 17, .9), rgba(8, 12, 17, .96));
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative
+        }
+
+        .term .prompt {
+            color: var(--acc)
+        }
+
+        .input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, .02);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .input input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--fg);
+            font: inherit
+        }
+
+        .input .btn {
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--acc), var(--acc-2));
+            color: #021b13;
+            font-weight: 700;
+            border: none;
+            cursor: pointer
+        }
 
         /* Skills chips */
-        .chips{display:flex; flex-wrap:wrap; gap:10px}
-        .chip{padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.08); color:var(--muted); background:rgba(255,255,255,.02)}
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
 
-        footer{display:flex; justify-content:space-between; gap:16px; color:var(--muted); font-size:13px; padding:4px 2px}
+        .chip {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: var(--muted);
+            background: rgba(255, 255, 255, .02)
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 4px 2px
+        }
     </style>
 </head>
 <body>
 <div class="wrap">
     <header>
-        <div class="brand"><div class="logo" aria-hidden="true"></div><div class="title">Michael Harris</div></div>
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <div class="title">Michael Harris</div>
+        </div>
         <nav>
             <a class="pill" href="#" data-cmd="about">About</a>
             <a class="pill" href="#" data-cmd="projects">Projects</a>
@@ -100,8 +239,9 @@
             <div class="body">
                 <div id="screen" class="screen" aria-live="polite"></div>
                 <div class="input">
-                    <span class="prompt">michael@site:~$</span>
-                    <input id="cmd" type="text" placeholder="Type a command — try: help, projects, theme mint" autocomplete="off" />
+                    <span class="prompt">user@troglodyte:~$</span>
+                    <input id="cmd" type="text" placeholder="Type a command — try: help, projects, theme mint"
+                           autocomplete="off"/>
                     <button class="btn" id="run">Run</button>
                 </div>
             </div>
@@ -110,14 +250,19 @@
         <div class="card">
             <h2>profile</h2>
             <div class="body">
-                <p>Principal Software Engineer focused on data pipelines, large-scale integrations, and developer experience. Clean code, measurable outcomes, happy teams.</p>
+                <p>Principal Software Engineer with extensive experience in development and team leadership. I bring
+                    modern, battle-tested software practices that deliver reliable, efficient, and maintainable
+                    solutions. My focus has always been on building scalable systems that save time, and resources in an
+                    efficient manner while mentoring other developers to grow in their craft and efficiency. </p>
                 <div class="chips" aria-label="skills">
                     <span class="chip">PHP/Laravel</span>
                     <span class="chip">Python</span>
-                    <span class="chip">MySQL/Postgres</span>
-                    <span class="chip">Redis</span>
-                    <span class="chip">AWS (S3/SQS)</span>
-                    <span class="chip">Docker · Linux</span>
+                    <span class="chip">JavaScript/TypeScript</span>
+                    <span class="chip">React/Angular</span>
+                    <span class="chip">MySQL/Postgres/Oracle</span>
+                    <span class="chip">AWS/GC</span>
+                    <span class="chip">Docker/Kubernetes/Linux</span>
+                    <span class="chip">So much more...</span>
                 </div>
             </div>
         </div>
@@ -125,14 +270,14 @@
         <div class="card" style="grid-column:1/-1">
             <h2>now</h2>
             <div class="body" id="now">
-                <p>Open to interesting engineering leadership roles and high-impact integration work. Building small tools that remove big friction.</p>
+                <p>Open to interesting engineering leadership roles, and/or high-impact software engineering work.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div>© <span id="year"></span> Michael Harris</div>
-        <div><span class="muted">retro·modern</span></div>
+        <div>© <span id="year"></span> Michael Harris - <a href="https://github.com/troglodyte">github.com/troglodyte</a> - <a href="https://www.linkedin.com/in/mtharris/">linkedin.com/in/mtharris</a></div>
+        <div><span class="muted">polyglot</span></div>
     </footer>
 </div>
 
@@ -140,16 +285,30 @@
     const screenEl = document.getElementById('screen');
     const inputEl = document.getElementById('cmd');
     const runEl = document.getElementById('run');
-    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+    const year = document.getElementById('year');
+    // const menuSkills = document.querySelectorAll('[data-cmd="skills"]');
 
-    const state = { history:[], idx:0, theme:'mint' };
+    year.textContent = new Date().getFullYear();
 
-    const write = (text="") => { const div=document.createElement('div'); div.textContent=text; screenEl.appendChild(div); screenEl.scrollTop=screenEl.scrollHeight; };
-    const writeHTML = (html="") => { const div=document.createElement('div'); div.innerHTML=html; screenEl.appendChild(div); screenEl.scrollTop=screenEl.scrollHeight; };
+    const state = {history: [], idx: 0, theme: 'mint'};
+
+    const write = (text = "") => {
+        const div = document.createElement('div');
+        div.textContent = text;
+        screenEl.appendChild(div);
+        screenEl.scrollTop = screenEl.scrollHeight;
+    };
+
+    const writeHTML = (html = "") => {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        screenEl.appendChild(div);
+        screenEl.scrollTop = screenEl.scrollHeight;
+    };
 
     const banner = () => {
         write(" ┌───────────────────────────────────────────────┐");
-        write(" │  michael@site — retro·modern terminal        │");
+        write(" │  troglodyte.github.io on  main ");
         write(" └───────────────────────────────────────────────┘");
         write("Type 'help' for commands. Arrow keys to browse history.");
         write("");
@@ -164,14 +323,13 @@
 
     const about = () => {
         write("Michael T. Harris — Principal Software Engineer.");
-        write("Ships resilient data integrations (K-12 scale), improves DX, mentors teams.");
+        write("Ships resilient, scalable, clean code, and mentors teams.");
     };
 
     const projects = () => {
         write("Projects:");
-        write(" - Clever3 / OneRoster 1.2 — multi-million row nightly imports");
-        write(" - Integrations & ETL for ed-tech / healthcare");
-        write(" - Performance and tooling that scale teams");
+        write(" - Clever3 / OneRoster 1.2 — multi-million nightly imports");
+        write(" - Integrations & ETL for ed-tech / Fintech /  healthcare");
     };
 
     const skills = () => {
@@ -179,54 +337,87 @@
     };
 
     const contact = () => {
-        writeHTML('Email: <a href="mailto:michael@example.com">michael@example.com</a>');
-        writeHTML('GitHub: <a href="https://github.com/" target="_blank" rel="noreferrer">github.com/your-handle</a>');
-        writeHTML('LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin.com/in/your-handle</a>');
+        writeHTML('GitHub: <a href="https://github.com/troglodyte" target="_blank" rel="noreferrer">github.com/troglodyte</a>');
+        writeHTML('LinkedIn: <a href="https://linkedin.com/in/mtharris" target="_blank" rel="noreferrer">linkedin.com/in/mtharris</a>');
     };
 
     const theme = (name) => {
         const root = document.documentElement;
-        if(name==='aqua'){
-            root.style.setProperty('--acc','#7de0ff');
-            root.style.setProperty('--acc-2','#77ffc8');
-        } else if(name==='violet'){
-            root.style.setProperty('--acc','#b77dff');
-            root.style.setProperty('--acc-2','#7aa2ff');
+        if (name === 'aqua') {
+            root.style.setProperty('--acc', '#7de0ff');
+            root.style.setProperty('--acc-2', '#77ffc8');
+        } else if (name === 'violet') {
+            root.style.setProperty('--acc', '#b77dff');
+            root.style.setProperty('--acc-2', '#7aa2ff');
         } else { // mint
-            root.style.setProperty('--acc','#5cf2c7');
-            root.style.setProperty('--acc-2','#7aa2ff');
+            root.style.setProperty('--acc', '#5cf2c7');
+            root.style.setProperty('--acc-2', '#7aa2ff');
         }
-        state.theme=name; write(`theme -> ${name}`);
+        state.theme = name;
+        write(`theme -> ${name}`);
     };
 
-    const clear = () => { screenEl.innerHTML=''; };
+    const clear = () => {
+        screenEl.innerHTML = '';
+    };
 
-    const commands = { help, about, projects, skills, contact, banner, clear, theme };
+    const commands = {help, about, projects, skills, contact, banner, clear, theme};
 
     const run = (raw) => {
-        const line = (raw||'').trim(); if(!line) return;
+        const line = (raw || '').trim();
+        if (!line) return;
         write(`michael@site:~$ ${line}`);
-        const [cmd, ...rest] = line.split(/\\s+/); const arg = rest.join(' ');
+        const [cmd, ...rest] = line.split(/\\s+/);
+        const arg = rest.join(' ');
         const fn = commands[cmd];
-        if(fn){ try{ fn(arg); } catch(e){ write(`error: ${e.message}`);} }
-        else { write(`command not found: ${cmd}`); }
+        if (fn) {
+            try {
+                fn(arg);
+            } catch (e) {
+                write(`error: ${e.message}`);
+            }
+        } else {
+            write(`command not found: ${cmd}`);
+        }
         write('');
     };
 
-    inputEl.addEventListener('keydown', (e)=>{
-        if(e.key==='Enter'){
-            state.history.push(inputEl.value); state.idx = state.history.length;
-            run(inputEl.value); inputEl.value='';
-        } else if(e.key==='ArrowUp'){
-            if(state.idx>0) state.idx--; inputEl.value = state.history[state.idx] || ''; e.preventDefault();
-        } else if(e.key==='ArrowDown'){
-            if(state.idx < state.history.length) state.idx++; inputEl.value = state.history[state.idx] || ''; e.preventDefault();
+    document.addEventListener('click', (event) => {
+        const cmdElement = event.target.closest('[data-cmd]') ?? null;
+
+        if (cmdElement) {
+            const cmd = cmdElement.dataset.cmd;
+            write(`michael@site:~$ > ${cmd}`);
+            console.log('Command clicked:', cmd);
+            commands[cmd]()
         }
     });
-    runEl.addEventListener('click', ()=>{ run(inputEl.value); inputEl.value=''; inputEl.focus(); });
 
-    // Init
-    banner(); help();
+    inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            state.history.push(inputEl.value);
+            state.idx = state.history.length;
+            run(inputEl.value);
+            inputEl.value = '';
+        } else if (e.key === 'ArrowUp') {
+            if (state.idx > 0) state.idx--;
+            inputEl.value = state.history[state.idx] || '';
+            e.preventDefault();
+        } else if (e.key === 'ArrowDown') {
+            if (state.idx < state.history.length) state.idx++;
+            inputEl.value = state.history[state.idx] || '';
+            e.preventDefault();
+        }
+    });
+
+    runEl.addEventListener('click', () => {
+        run(inputEl.value);
+        inputEl.value = '';
+        inputEl.focus();
+    });
+
+    banner();
+    help();
     inputEl.focus();
 </script>
 </body>
