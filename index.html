@@ -421,7 +421,7 @@
         const line = (raw || '').trim();
         if (!line) return;
         write(`michael@site:~$ ${line}`);
-        const [cmd, ...rest] = line.split(/\\s+/);
+        const [cmd, ...rest] = line.split(/\s+/);
         const arg = rest.join(' ');
         const fn = commands[cmd];
         if (fn) {
