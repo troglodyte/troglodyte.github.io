@@ -215,6 +215,26 @@
             font-size: 13px;
             padding: 4px 2px
         }
+        #developer_name span::after {
+            color: rgb(255, 0, 0);
+            content: "Engineer";
+            padding-left: 10px;
+            animation: subtext 6s infinite;
+        }
+        @keyframes subtext {
+            0%,25% {
+                content: "Engineer";
+            }
+            26%,50% {
+                content: "Team Lead";
+            }
+            51%,75% {
+                content: "Mentor";
+            }
+            76%,100% {
+                content: "Polyglot";
+            }
+        }
     </style>
 </head>
 <body>
@@ -222,7 +242,7 @@
     <header>
         <div class="brand">
             <div class="logo" aria-hidden="true"></div>
-            <div class="title">Michael Harris</div>
+            <div class="title" id="developer_name">Michael Harris:<span></span></div>
         </div>
         <nav>
             <a class="pill" href="#" data-cmd="about">About</a>
