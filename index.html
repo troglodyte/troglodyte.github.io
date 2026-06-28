@@ -4,494 +4,426 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Michael Harris — troglodyte.github.io</title>
-    <meta name="description" content="Michael Harris - principal software engineer"/>
+    <title>Michael Harris — Principal Software Engineer</title>
+    <meta name="description" content="Michael Harris — Principal Software Engineer and Engineering Team Lead"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
+        /* Palette sourced from taniarascia.com */
         :root {
-            --bg: #0b0f14;
-            --bg-elev: #0f141b;
-            --fg: #cfe6d9;
-            --muted: #8aa29e;
-            --acc: #5cf2c7;
-            --acc-2: #7aa2ff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .03);
-            --radius: 16px;
-            --grid: radial-gradient(1000px 600px at 10% 0%, rgba(92, 242, 199, .07), transparent 60%),
-            radial-gradient(800px 800px at 90% 10%, rgba(122, 162, 255, .05), transparent 60%);
+            --beige-0: #fdf9ee;
+            --beige-1: #f6f0df;
+            --beige-2: #eee8d5;
+            --beige-3: #ded4b2;
+            --beige-4: #c6ba93;
+            --gray-6: #4e4e55;
+            --gray-7: #323239;
+            --gray-8: #25252b;
+            --gray-10: #1d1d22;
+
+            --bg:           var(--beige-0);
+            --bg-alt:       var(--beige-1);
+            --border:       var(--beige-2);
+            --border-hover: var(--beige-3);
+            --text:         var(--gray-8);
+            --text-muted:   var(--gray-6);
+            --text-strong:  var(--gray-10);
+            --accent:       #0f766e;
+            --accent-light: #e6f7f5;
+
+            --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Avenir, Helvetica, Arial, sans-serif;
+            --radius:       6px;
+            --content-width: 760px;
         }
 
-        * {
-            box-sizing: border-box
-        }
-
-        html, body {
-            height: 100%
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            margin: 0;
             background: var(--bg);
-            color: var(--fg);
-            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-            line-height: 1.6;
-            letter-spacing: .2px;
-            background-image: var(--grid);
-            background-attachment: fixed;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        a {
-            color: var(--acc)
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(253, 249, 238, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
         }
 
-        a:hover {
-            color: var(--acc-2)
-        }
-
-        .wrap {
-            max-width: 1100px;
+        .nav-inner {
+            max-width: var(--content-width);
             margin: 0 auto;
-            padding: 28px;
-            display: grid;
-            gap: 22px
-        }
-
-        header {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px
-        }
-
-        .logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--acc), var(--acc-2));
-            box-shadow: 0 8px 30px rgba(124, 200, 255, .25);
-            flex: 0 0 auto;
-            position: relative;
-        }
-
-        .logo:after {
-            content: "$";
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            color: #00120d;
-            font-weight: 800
-        }
-
-        .title {
-            font-weight: 800;
-            letter-spacing: .3px
-        }
-
-        nav {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap
-        }
-
-        .pill {
-            padding: 8px 12px;
-            background: color-mix(in srgb, var(--bg-elev) 92%, white 8%);
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: 999px;
-            color: var(--fg);
-            text-decoration: none;
-            box-shadow: var(--shadow);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 22px
-        }
-
-        @media (max-width: 900px) {
-            .grid {
-                grid-template-columns:1fr
-            }
-        }
-
-        .card {
-            background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elev) 94%, white 6%), color-mix(in srgb, var(--bg-elev) 98%, black 2%));
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card h2 {
-            margin: 0;
-            padding: 18px 20px;
-            font-size: 18px;
-            color: var(--muted);
-            border-bottom: 1px solid rgba(255, 255, 255, .06)
-        }
-
-        .card .body {
-            padding: 18px 20px
-        }
-
-        /* Retro-modern terminal */
-        .term {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-            font-size: 14px
-        }
-
-        .term .screen {
-            height: 360px;
-            overflow: auto;
-            background: linear-gradient(180deg, rgba(8, 12, 17, .9), rgba(8, 12, 17, .96));
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: 12px;
-            padding: 16px;
-            position: relative
-        }
-
-        .term .prompt {
-            color: var(--acc)
-        }
-
-        .input {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 10px;
-            background: rgba(255, 255, 255, .02);
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: 10px;
-            padding: 10px 12px;
-        }
-
-        .input input {
-            flex: 1;
-            border: none;
-            outline: none;
-            background: transparent;
-            color: var(--fg);
-            font: inherit
-        }
-
-        .input .btn {
-            padding: 8px 12px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--acc), var(--acc-2));
-            color: #021b13;
+        .nav-title {
+            font-family: var(--font-heading);
             font-weight: 700;
-            border: none;
-            cursor: pointer
+            font-size: 17px;
+            color: var(--text-strong);
+            text-decoration: none;
         }
 
-        /* Skills chips */
-        .chips {
+        .nav-title:hover { text-decoration: none; color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-family: var(--font-heading);
+            padding: 6px 10px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .nav-links a:hover {
+            background: var(--beige-2);
+            color: var(--text-strong);
+            text-decoration: none;
+        }
+
+        /* ── Main ── */
+        .wrap {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* ── Hero ── */
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-strong);
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .hero .subtitle .role::after {
+            content: "Engineer";
+            color: var(--accent);
+            font-weight: 600;
+            animation: roles 9s infinite;
+        }
+
+        @keyframes roles {
+            0%,  24% { content: "Engineer"; }
+            25%, 49% { content: "Team Lead"; }
+            50%, 74% { content: "Mentor"; }
+            75%, 99% { content: "Polyglot"; }
+        }
+
+        .hero-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px
+            align-items: center;
+            gap: 6px 10px;
+            margin-top: 18px;
+            font-size: 14px;
+            color: var(--text-muted);
         }
 
-        .chip {
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, .08);
-            color: var(--muted);
-            background: rgba(255, 255, 255, .02)
+        .hero-meta a {
+            color: var(--text-muted);
+            text-decoration: none;
         }
 
+        .hero-meta a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .dot { color: var(--beige-3); }
+
+        /* ── Section heading ── */
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-strong);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* ── Summary ── */
+        .summary p {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        /* ── Skills ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+            transition: border-color 0.15s;
+        }
+
+        .skill-card:hover { border-color: var(--border-hover); }
+
+        .skill-card h3 {
+            font-family: var(--font-heading);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent);
+            margin-bottom: 7px;
+        }
+
+        .skill-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job {
+            display: grid;
+            grid-template-columns: 96px 1fr;
+            gap: 0 22px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .job:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .job .dates {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding-top: 3px;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.4;
+        }
+
+        .job .role {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-strong);
+            line-height: 1.3;
+        }
+
+        .job .org {
+            font-size: 13.5px;
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        .job .desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 7px;
+            line-height: 1.65;
+        }
+
+        /* ── Footer ── */
         footer {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
             display: flex;
             justify-content: space-between;
-            gap: 16px;
-            color: var(--muted);
+            flex-wrap: wrap;
+            gap: 8px;
             font-size: 13px;
-            padding: 4px 2px
+            color: var(--text-muted);
         }
-        #developer_name span::after {
-            color: rgb(255, 0, 0);
-            content: "Engineer";
-            padding-left: 10px;
-            animation: subtext 6s infinite;
-        }
-        @keyframes subtext {
-            0%,25% {
-                content: "Engineer";
-            }
-            26%,50% {
-                content: "Team Lead";
-            }
-            51%,75% {
-                content: "Mentor";
-            }
-            76%,100% {
-                content: "Polyglot";
-            }
+
+        footer a { color: var(--text-muted); }
+        footer a:hover { color: var(--accent); text-decoration: none; }
+        footer .gap { display: inline; margin: 0 4px; }
+
+        @media (max-width: 560px) {
+            .hero h1 { font-size: 1.9rem; }
+            .job { grid-template-columns: 1fr; }
+            .job .dates { margin-bottom: 4px; padding-top: 0; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-<div class="wrap">
-    <header>
-        <div class="brand">
-            <div class="logo" aria-hidden="true"></div>
-            <div class="title" id="developer_name">Michael Harris:<span></span></div>
+
+<nav>
+    <div class="nav-inner">
+        <a class="nav-title" href="/">Michael Harris</a>
+        <div class="nav-links">
+            <a href="https://github.com/troglodyte" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/mtharris" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:throwingfish@gmail.com">Email</a>
         </div>
-        <nav>
-            <a class="pill" href="#" data-cmd="about">About</a>
-            <a class="pill" href="#" data-cmd="projects">Projects</a>
-            <a class="pill" href="#" data-cmd="skills">Skills</a>
-            <a class="pill" href="#" data-cmd="contact">Contact</a>
-            <a class="pill" href="#" data-cmd="help">Help</a>
-        </nav>
+    </div>
+</nav>
+
+<div class="wrap">
+
+    <header class="hero">
+        <h1>Michael Harris</h1>
+        <div class="subtitle">Principal Software <span class="role"></span></div>
+        <div class="hero-meta">
+            <span>Homosassa, FL</span>
+            <span class="dot">&middot;</span>
+            <span>Open to relocation</span>
+            <span class="dot">&middot;</span>
+            <a href="mailto:throwingfish@gmail.com">throwingfish@gmail.com</a>
+            <span class="dot">&middot;</span>
+            <a href="https://github.com/troglodyte" target="_blank" rel="noreferrer">github.com/troglodyte</a>
+        </div>
     </header>
 
-    <section class="grid">
-        <div class="card term">
-            <h2>terminal</h2>
-            <div class="body">
-                <div id="screen" class="screen" aria-live="polite"></div>
-                <div class="input">
-                    <span class="prompt">user@troglodyte:~$</span>
-                    <input id="cmd" type="text" placeholder="Type a command — try: help, projects, theme mint"
-                           autocomplete="off"/>
-                    <button class="btn" id="run">Run</button>
-                </div>
-            </div>
-        </div>
+    <section class="summary">
+        <h2>About</h2>
+        <p>25+ years building scalable systems and leading engineering teams across ed-tech, fintech, and
+            healthcare. Focused on clean, testable architecture, cloud-first design, and growing the engineers
+            around me.</p>
+    </section>
 
-        <div class="card">
-            <h2>profile</h2>
-            <div class="body">
-                <p>Principal Software Engineer with extensive experience in development and team leadership. I bring
-                    modern, battle-tested software practices that deliver reliable, efficient, and maintainable
-                    solutions. My focus has always been on building scalable systems that save time, and resources in an
-                    efficient manner while mentoring other developers, helping them to grow in their craft.</p>
-                <div class="chips" aria-label="skills">
-                    <span class="chip">PHP/Laravel</span>
-                    <span class="chip">Python</span>
-                    <span class="chip">JavaScript/TypeScript</span>
-                    <span class="chip">React/Angular</span>
-                    <span class="chip">MySQL/Postgres/Oracle</span>
-                    <span class="chip">AWS/GC</span>
-                    <span class="chip">Docker/Kubernetes/Linux</span>
-                    <span class="chip">So much more...</span>
-                </div>
+    <section>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Languages</h3>
+                <p>PHP &middot; Python &middot; TypeScript &middot; JavaScript &middot; SQL &middot; Bash</p>
             </div>
-        </div>
-
-        <div class="card" style="grid-column:1/-1">
-            <h2>currently</h2>
-            <div class="body">
-                <p>Open to interesting engineering leadership roles, and/or high-impact software engineering work.</p>
-                <p>Some of my current personal projects:</p>
-                <ul>
-                    <li><a href="https://github.com/troglodyte/RL">Roguelike - tbd</a></li>
-                    <li>Reconnoitering Kafka with Python pub/sub</li>
-                    <li>Python NPC interactive conversation generator</li>
-                    <li>Discovering GraphQL interactions alongside Node.js</li>
-                    <li><a href="https://github.com/troglodyte">More on my Github page here...</a></li>
-                </ul>
+            <div class="skill-card">
+                <h3>Frameworks</h3>
+                <p>Laravel &middot; Angular &middot; React &middot; Node.js &middot; Symfony &middot; Phalcon</p>
             </div>
-        </div>
-
-        <div class="card" style="grid-column:1/-1">
-            <h2>past languages</h2>
-            <div class="body">
-                <p>Some the technologies that I have worked with in the past, both professionally and personally:</p>
-                <div class="chips" aria-label="skills">
-                    <span class="chip">Laravel</span>
-                    <span class="chip">Legacy pure PHP 4.* through 8.* (current)</span>
-                    <span class="chip">JavaScript</span>
-                    <span class="chip">TypeScript</span>   
-                    <span class="chip"><a href="http://vanilla-js.com">Vanilla js</a></span>      
-                    <span class="chip">Docker</span>            
-                    <span class="chip">Postgres</span>
-                    <span class="chip">Oracle</span>                   
-                    <span class="chip">Zend Framework</span>
-                    <span class="chip">Symfony</span>
-                    <span class="chip">Phalcon</span>
-                    <span class="chip">CakePHP</span>
-                    <span class="chip">Wordpress</span>
-                    <span class="chip">Drupal</span>
-                    <span class="chip">Perl</span>
-                    <span class="chip">Coldfusion</span>
-                    <span class="chip">C</span>
-                    <span class="chip">R</span>
-                    <span class="chip">Java</span>
-                    <span class="chip">Bash</span>
-                    <span class="chip">Python</span>
-                    <span class="chip">Django</span>
-                    <span class="chip">Flask</span>
-                    <span class="chip">Mootools</span>
-                    <span class="chip">JQuery</span>
-                    <span class="chip">Angular</span>
-                    <span class="chip">AngularJS</span>
-                    <span class="chip">Ramda js</span>
-                    <span class="chip">Oracle</span>
-                    <span class="chip">SQLite</span>
-                    <span class="chip">MongoDB</span>
-                    <span class="chip">DynamoDB</span>
-                    <span class="chip">AWS S3 EC2 Lambda SNS SQS</span>
-                    <span class="chip">Google Cloud</span>
-                    <span class="chip">Kubernetes</span>
-                    <span class="chip">Linux - Ubuntu, Mandrake, Red Hat, CentOS, Fedora, etc</span>
-                    <span class="chip">So much more...</span>
-                </div>
+            <div class="skill-card">
+                <h3>Cloud &amp; DevOps</h3>
+                <p>AWS (Lambda &middot; S3 &middot; SQS &middot; SNS) &middot; GCP &middot; Docker &middot; CI/CD &middot; Linux</p>
+            </div>
+            <div class="skill-card">
+                <h3>Databases</h3>
+                <p>MySQL &middot; PostgreSQL &middot; Oracle &middot; Redis &middot; MongoDB &middot; DynamoDB</p>
+            </div>
+            <div class="skill-card">
+                <h3>Leadership</h3>
+                <p>Team Lead &middot; Agile &middot; Mentorship &middot; Architecture &middot; HIPAA</p>
             </div>
         </div>
     </section>
 
+    <section>
+        <h2>Experience</h2>
+        <div class="timeline">
+
+            <div class="job">
+                <div class="dates">2026 &rarr;</div>
+                <div>
+                    <div class="role">Senior Web Engineer III</div>
+                    <div class="org">Johnson Health Tech &middot; Remote</div>
+                    <div class="desc">R&amp;D Web team. OAuth systems via AWS Lambda, CDK, and DynamoDB.</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="dates">2021&ndash;2025</div>
+                <div>
+                    <div class="role">Principal Software Engineer &amp; Team Lead</div>
+                    <div class="org">Lexia Learning &middot; Remote</div>
+                    <div class="desc">Architected and led the Clever3 rostering integration; modernized legacy import
+                        systems into a scalable Laravel/AWS framework; drove OneRoster 1.2 adoption across school
+                        districts. Mentored engineers on clean architecture and cloud-first practices.</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="dates">2020&ndash;2021</div>
+                <div>
+                    <div class="role">Senior Software Developer</div>
+                    <div class="org">Mend.com &middot; Remote</div>
+                    <div class="desc">HIPAA-compliant telehealth platforms; Angular/PHP/Phalcon import and auditing
+                        tooling for high-integrity medical data workflows.</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="dates">2017&ndash;2019</div>
+                <div>
+                    <div class="role">Senior Software Engineer &amp; Team Lead</div>
+                    <div class="org">Chargebacks911 &middot; Remote</div>
+                    <div class="desc">Led multiple agile teams building dispute automation for international banks and
+                        Fortune 500 clients. Integrated Visa APIs; designed async job processing with Redis
+                        and AWS SQS.</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="dates">2000&ndash;2016</div>
+                <div>
+                    <div class="role">Earlier Roles</div>
+                    <div class="org">SavvyCard &middot; Ithaca College &middot; That's Us Technologies &middot; Cornell &middot; Yale &middot; WTNH &middot; Freelance</div>
+                    <div class="desc">Web application development, enterprise systems, team leadership, and consulting
+                        across higher education, media, and startups.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
-        <div>© <span id="year"></span> Michael Harris - <a href="https://github.com/troglodyte">github.com/troglodyte</a> - <a href="https://www.linkedin.com/in/mtharris/">linkedin.com/in/mtharris</a></div>
-        <div><span class="muted">polyglot</span></div>
+        <span>&copy; <span id="yr"></span> Michael Harris</span>
+        <div>
+            <a href="https://github.com/troglodyte" target="_blank" rel="noreferrer">GitHub</a>
+            <span class="gap">&middot;</span>
+            <a href="https://linkedin.com/in/mtharris" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span class="gap">&middot;</span>
+            <a href="mailto:throwingfish@gmail.com">Email</a>
+        </div>
     </footer>
+
 </div>
-
-<script>
-    const screenEl = document.getElementById('screen');
-    const inputEl = document.getElementById('cmd');
-    const runEl = document.getElementById('run');
-    const year = document.getElementById('year');
-    // const menuSkills = document.querySelectorAll('[data-cmd="skills"]');
-
-    year.textContent = new Date().getFullYear();
-
-    const state = {history: [], idx: 0, theme: 'mint'};
-
-    const write = (text = "") => {
-        const div = document.createElement('div');
-        div.textContent = text;
-        screenEl.appendChild(div);
-        screenEl.scrollTop = screenEl.scrollHeight;
-    };
-
-    const writeHTML = (html = "") => {
-        const div = document.createElement('div');
-        div.innerHTML = html;
-        screenEl.appendChild(div);
-        screenEl.scrollTop = screenEl.scrollHeight;
-    };
-
-    const banner = () => {
-        write(" >  troglodyte.github.io with ❤️ on main ");
-        write("Type 'help' for commands. Arrow keys to browse history.");
-        write("");
-    };
-
-    const help = () => {
-        write("Commands:");
-        write("  help, about, projects, skills, contact");
-        write("  theme <mint|aqua|violet>");
-        write("  clear, banner");
-    };
-
-    const about = () => {
-        write("Michael T. Harris — Experienced Software Engineer.");
-        write("Ships resilient, scalable, clean code, and mentors teams.");
-    };
-
-    const projects = () => {
-        write("Projects:");
-        write(" - Clever3 / OneRoster 1.2 — multi-million nightly imports");
-        write(" - Integrations & ETL for ed-tech / Fintech /  healthcare");
-    };
-
-    const skills = () => {
-        write("Skills: PHP, Python, JS/TS, SQL, AWS, Docker, Linux, Redis, Observability");
-    };
-
-    const contact = () => {
-        writeHTML('GitHub: <a href="https://github.com/troglodyte" target="_blank" rel="noreferrer">github.com/troglodyte</a>');
-        writeHTML('LinkedIn: <a href="https://linkedin.com/in/mtharris" target="_blank" rel="noreferrer">linkedin.com/in/mtharris</a>');
-    };
-
-    const theme = (name) => {
-        const root = document.documentElement;
-        if (name === 'aqua') {
-            root.style.setProperty('--acc', '#7de0ff');
-            root.style.setProperty('--acc-2', '#77ffc8');
-        } else if (name === 'violet') {
-            root.style.setProperty('--acc', '#b77dff');
-            root.style.setProperty('--acc-2', '#7aa2ff');
-        } else { // mint
-            root.style.setProperty('--acc', '#5cf2c7');
-            root.style.setProperty('--acc-2', '#7aa2ff');
-        }
-        state.theme = name;
-        write(`theme -> ${name}`);
-    };
-
-    const clear = () => {
-        screenEl.innerHTML = '';
-    };
-
-    const commands = {help, about, projects, skills, contact, banner, clear, theme};
-
-    const run = (raw) => {
-        const line = (raw || '').trim();
-        if (!line) return;
-        write(`michael@site:~$ ${line}`);
-        const [cmd, ...rest] = line.split(/\s+/);
-        const arg = rest.join(' ');
-        const fn = commands[cmd];
-        if (fn) {
-            try {
-                fn(arg);
-            } catch (e) {
-                write(`error: ${e.message}`);
-            }
-        } else {
-            write(`command not found: ${cmd}`);
-        }
-        write('');
-    };
-
-    document.addEventListener('click', (event) => {
-        const cmdElement = event.target.closest('[data-cmd]') ?? null;
-
-        if (cmdElement) {
-            const cmd = cmdElement.dataset.cmd;
-            write(`michael@site:~$ > ${cmd}`);
-            console.log('Command clicked:', cmd);
-            commands[cmd]()
-        }
-    });
-
-    inputEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            state.history.push(inputEl.value);
-            state.idx = state.history.length;
-            run(inputEl.value);
-            inputEl.value = '';
-        } else if (e.key === 'ArrowUp') {
-            if (state.idx > 0) state.idx--;
-            inputEl.value = state.history[state.idx] || '';
-            e.preventDefault();
-        } else if (e.key === 'ArrowDown') {
-            if (state.idx < state.history.length) state.idx++;
-            inputEl.value = state.history[state.idx] || '';
-            e.preventDefault();
-        }
-    });
-
-    runEl.addEventListener('click', () => {
-        run(inputEl.value);
-        inputEl.value = '';
-        inputEl.focus();
-    });
-
-    banner();
-    help();
-    inputEl.focus();
-</script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
